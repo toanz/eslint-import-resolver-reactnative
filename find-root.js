@@ -10,12 +10,12 @@ function findRoot(start) {
     start = start.split(path.sep);
   }
   if (!start.length) {
-    throw new Error(".eslintrc.js not found in path");
+    throw new Error(".eslintrc not found in path");
   }
   start.pop();
   var dir = start.join(path.sep);
   try {
-    fs.statSync(path.join(dir, ".eslintrc.js"));
+    fs.statSync(path.join(dir, ".eslintrc"));
     return dir;
   } catch (e) {}
   return findRoot(start);
