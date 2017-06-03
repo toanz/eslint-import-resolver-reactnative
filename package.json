@@ -17,8 +17,7 @@
   },
   "homepage": "https://github.com/guzart/eslint-import-resolver-reactnative#readme",
   "dependencies": {
-    "eslint-import-resolver-node": "^0.2.3",
-    "find-root": "^1.0.0"
+    "eslint-import-resolver-node": "^0.2.3"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",

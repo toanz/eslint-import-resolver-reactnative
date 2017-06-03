@@ -1,4 +1,4 @@
-var findRoot = require('find-root');
+var findRoot = require('./find-root');
 var nodeResolver = require('eslint-import-resolver-node');
 var path = require('path');
 
@@ -23,12 +23,10 @@ exports.resolve = function (source, file, userSettings) {
   try {
     var appRoot = findRoot(file);
     var package = require(path.join(appRoot, 'package.json'));
-    if (package.name) {
-      var namePath = package.name + '/';
-      if (source.indexOf(namePath) === 0) {
-        var absSource = path.join(appRoot, source.replace(namePath, ''));
+    if (package.name && source.startsWith('@')) {
+        var absSource = path.join(appRoot, source.replace('@', ''));
         return nodeResolver.resolve(absSource, file, settings);
-      }
+      
     }
   } catch (err) {
     log('Error:', err);
